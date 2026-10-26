@@ -739,6 +739,26 @@ slide.up-slide { padding-top: 75px; margin-bottom: 15px }
 .lg-mid .lg-code { margin-top: 64px !important; font-size: 40px; line-height: 1.45; padding: 40px 64px; }
 .lg-mid .lg-rule { margin-top: 44px; font-size: 40px; }
 .truth-not { max-width: 760px; }
+.tf-table.tf-dense { --row-h: 40px; font-size: 22px; }
+.tf-table.tf-dense .tf-line { font-size: 22px; }
+.ar-code { font-size: 72px; text-align: center; }
+.ar-res { display: block; margin-top: 48px; color: var(--color-accent-700); font-weight: 700; }
+.prec-tbl { max-width: 1100px; }
+.prec-tbl td { padding-top: 8px; padding-bottom: 8px; }
+.prec-tbl td.opt-sym { font-size: 34px; white-space: pre; }
+.prec-tbl td.prec-n { width: 110px; font-family: var(--font-heading); color: var(--color-accent-600); }
+
+.tf-table tr.tf-ask .tf-fill span { position: relative; background: var(--color-accent-100); }
+.tf-table tr.tf-ask .tf-fill span::before { content: ""; position: absolute; left: 18px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: var(--color-accent); }
+
+.qz-slide { padding-top: 80px; }
+.qz-split { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0,1fr) 860px; gap: 80px; align-items: stretch; }
+.qz-split .ref-code { height: 100%; }
+.qz-list { align-self: center; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 56px; font-size: 38px; line-height: 1.5; }
+.qz-list li { position: relative; padding-right: 48px; }
+.qz-list li::before { content: ""; position: absolute; right: 0; top: 0.55em; width: 18px; height: 18px; border-radius: 50%; background: var(--color-accent); }
+.qz-list b { display: block; font-weight: 700; }
+
 </style>
 </head>
 <body>
@@ -754,8 +774,8 @@ slide.up-slide { padding-top: 75px; margin-bottom: 15px }
   <div class="toc rise">
     <div class="toc-row"><span class="toc-num">01</span><div class="toc-topic"><span>משפט תנאי בסיסי</span></div></div>
     <div class="toc-row"><span class="toc-num">02</span><div class="toc-topic"><span>שרשרת תנאים</span></div></div>
-    <div class="toc-row"><span class="toc-num">03</span><div class="toc-topic"><span>תנאים מורכבים</span></div></div>
-    <div class="toc-row"><span class="toc-num">04</span><div class="toc-topic"><span>שלילה</span></div></div>
+    <div class="toc-row"><span class="toc-num">03</span><div class="toc-topic"><span>תנאי מקונן</span></div></div>
+    <div class="toc-row"><span class="toc-num">04</span><div class="toc-topic"><span>תנאים מורכבים: <span dir="ltr">&amp;&amp; || !</span></span></div></div>
     <div class="toc-row"><span class="toc-num">05</span><div class="toc-topic"><span>סיכום אופרטורים</span></div></div>
   </div>
   <div class="page-foot" aria-hidden="true"></div>
@@ -1013,7 +1033,112 @@ slide.up-slide { padding-top: 75px; margin-bottom: 15px }
 </section>
 
 <section class="slide divider" data-label="פרק 03">
-  <div class="rise"><div class="ghost-num">03</div><h2 class="slide-title">תנאים מורכבים</h2></div>
+  <div class="rise"><div class="ghost-num">03</div><h2 class="slide-title">תנאי מקונן</h2></div>
+</section>
+
+<section class="slide content ref-slide" data-label="תבנית שלישית">
+  <h2 class="slide-title">תבנית שלישית</h2>
+  <div class="zoom-overlay"></div>
+  <div class="code-block ref-code zoomable" dir="ltr">class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Hey Student! What's your name: ");
+        string name = Console.ReadLine();
+
+        Console.Write(name + ", What subject are you studying: ");
+        string subject = Console.ReadLine();
+
+        Console.Write("What's your grade in " + subject + ": ");
+        int grade = int.Parse(Console.ReadLine());
+
+<span class="code-mark" style="display:block; border:3px solid var(--color-accent-2-500); border-radius:8px; margin:0 -12px; padding:2px 9px;">        if (grade &lt; 55)
+        {
+            Console.Write("Do you want a retake exam? (yes/no): ");
+            string retake = Console.ReadLine();
+            if (retake == "yes")
+            {
+                Console.WriteLine("Good luck, " + name + "!");
+            }
+            else
+            {
+                Console.WriteLine("Maybe next time.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Good! You passed " + subject);
+        }</span>
+        Console.WriteLine("Bye " + name + "!");
+    }
+}</div>
+</section>
+
+<section class="slide content trace-fill-slide" data-label="ניתוח הקוד - תבנית 3">
+  <h2 class="slide-title combo-title">ניתוח הקוד - תבנית 3</h2>
+  <table class="table tf-table tf-compact tf-dense" style="position:absolute; top:130px; left:var(--pad-x); width:calc(100% - 2 * var(--pad-x)); max-width:none; margin:0;">
+    <thead>
+      <tr><th class="tf-fill">מה קורה בשורה?</th><th class="tf-line">שורת קוד</th><th class="tf-num">#</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">if (grade &lt; 55)</td><td class="tf-num">14</td></tr>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">{</td><td class="tf-num">15</td></tr>
+      <tr class="tf-ask"><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">&nbsp;&nbsp;&nbsp;&nbsp;Console.Write("Do you want a retake exam? (yes/no): ");</td><td class="tf-num">16</td></tr>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">&nbsp;&nbsp;&nbsp;&nbsp;string retake = Console.ReadLine();</td><td class="tf-num">17</td></tr>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">&nbsp;&nbsp;&nbsp;&nbsp;if (retake == "yes")</td><td class="tf-num">18</td></tr>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">&nbsp;&nbsp;&nbsp;&nbsp;{</td><td class="tf-num">19</td></tr>
+      <tr class="tf-ask"><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Good luck, " + name + "!");</td><td class="tf-num">20</td></tr>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="tf-num">21</td></tr>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">&nbsp;&nbsp;&nbsp;&nbsp;else</td><td class="tf-num">22</td></tr>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">&nbsp;&nbsp;&nbsp;&nbsp;{</td><td class="tf-num">23</td></tr>
+      <tr class="tf-ask"><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Maybe next time.");</td><td class="tf-num">24</td></tr>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">&nbsp;&nbsp;&nbsp;&nbsp;}</td><td class="tf-num">25</td></tr>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">}</td><td class="tf-num">26</td></tr>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">else</td><td class="tf-num">27</td></tr>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">{</td><td class="tf-num">28</td></tr>
+      <tr class="tf-ask"><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Good! You passed " + subject);</td><td class="tf-num">29</td></tr>
+      <tr><td class="tf-fill"><span></span></td><td class="tf-line" dir="ltr">}</td><td class="tf-num">30</td></tr>
+    </tbody>
+  </table>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content ifx-slide up-slide" data-label="תנאי מקונן">
+  <h2 class="slide-title">תנאי מקונן</h2>
+  <div class="code-block ifx-code ifx-multi" dir="ltr"><span class="ifx-row">if ( Outer condition ... )<span class="ifx-lead"><span class="ifx-note side"><span>תנאי חיצוני</span></span></span></span><span class="ifx-blk">{<span class="ifx-row">    if ( Inner condition ... )<span class="ifx-lead"><span class="ifx-note side"><span>תנאי פנימי</span></span></span></span>    {
+        <span class="cmt">// Both conditions are true</span>
+    }
+    else
+    {
+        <span class="cmt">// Only the outer condition is true</span>
+    }
+}<span class="ifx-note"><span>אם התנאי החיצוני מתקיים</span></span></span>else<span class="ifx-blk">{
+    <span class="cmt">// The outer condition is false</span>
+}<span class="ifx-note"><span>אם התנאי החיצוני לא מתקיים</span></span></span></div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide long" data-label="דוגמה מהחיים 3">
+  <div class="say-code" dir="ltr"><span class="k">if</span> <span class="b">(</span> <span class="h">אני רעבה</span> <span class="b">)</span>
+<span class="b">{</span>
+    <span class="k">if</span> <span class="b">(</span> <span class="h">יש מצרכים במקרר</span> <span class="b">)</span>
+    <span class="b">{</span>
+        <span class="h">אני מכינה אוכל</span>
+    <span class="b">}</span>
+    <span class="k">else</span>
+    <span class="b">{</span>
+        <span class="h">אני מזמינה משלוח</span>
+    <span class="b">}</span>
+<span class="b">}</span>
+<span class="k">else</span>
+<span class="b">{</span>
+    <span class="h">אני הולכת לטייל</span>
+<span class="b">}</span></div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide divider" data-label="פרק 04">
+  <div class="rise"><div class="ghost-num">04</div><h2 class="slide-title">תנאים מורכבים: <span dir="ltr">&amp;&amp; || !</span></h2></div>
 </section>
 
 <section class="slide content lg-slide lg-simple lg-big" data-label="וגם - דוגמה">
@@ -1082,24 +1207,6 @@ else
   <div class="page-foot" aria-hidden="true"></div>
 </section>
 
-<section class="slide content lg-slide" data-label="טבלת אמת">
-  <h2 class="slide-title">טבלת אמת</h2>
-  <table class="table lg-tbl truth-tbl" dir="ltr">
-    <thead><tr><th class="m">a</th><th class="m">b</th><th class="m">a &amp;&amp; b</th><th class="m">a || b</th></tr></thead>
-    <tbody>
-      <tr><td class="T m tv">true</td><td class="T m tv">true</td><td class="T m tv">true</td><td class="T m tv">true</td></tr>
-      <tr><td class="T m tv">true</td><td class="F m tv">false</td><td class="F m tv">false</td><td class="T m tv">true</td></tr>
-      <tr><td class="F m tv">false</td><td class="T m tv">true</td><td class="F m tv">false</td><td class="T m tv">true</td></tr>
-      <tr><td class="F m tv">false</td><td class="F m tv">false</td><td class="F m tv">false</td><td class="F m tv">false</td></tr>
-    </tbody>
-  </table>
-  <div class="page-foot" aria-hidden="true"></div>
-</section>
-
-<section class="slide divider" data-label="פרק 04">
-  <div class="rise"><div class="ghost-num">04</div><h2 class="slide-title">שלילה</h2></div>
-</section>
-
 <section class="slide content lg-slide lg-simple lg-big" data-label="לא - דוגמה">
   <h2 class="slide-title"><span dir="ltr">NOT !</span></h2>
   <div class="code-block lg-code" dir="ltr">if (<span class="k">!</span>(grade &gt;= 55))
@@ -1124,13 +1231,15 @@ else
   <div class="page-foot" aria-hidden="true"></div>
 </section>
 
-<section class="slide content lg-slide" data-label="טבלת אמת - לא">
-  <h2 class="slide-title">טבלת אמת: <span dir="ltr">!</span></h2>
-  <table class="table lg-tbl truth-tbl truth-not" dir="ltr">
-    <thead><tr><th class="m">a</th><th class="m">!a</th></tr></thead>
+<section class="slide content lg-slide" data-label="טבלת אמת">
+  <h2 class="slide-title">טבלת אמת</h2>
+  <table class="table lg-tbl truth-tbl" dir="ltr">
+    <thead><tr><th class="m">a</th><th class="m">b</th><th class="m">a &amp;&amp; b</th><th class="m">a || b</th><th class="m">!a</th></tr></thead>
     <tbody>
-      <tr><td class="T m tv">true</td><td class="F m tv">false</td></tr>
-      <tr><td class="F m tv">false</td><td class="T m tv">true</td></tr>
+      <tr><td class="T m tv">true</td><td class="T m tv">true</td><td class="T m tv">true</td><td class="T m tv">true</td><td class="F m tv">false</td></tr>
+      <tr><td class="T m tv">true</td><td class="F m tv">false</td><td class="F m tv">false</td><td class="T m tv">true</td><td class="F m tv">false</td></tr>
+      <tr><td class="F m tv">false</td><td class="T m tv">true</td><td class="F m tv">false</td><td class="T m tv">true</td><td class="T m tv">true</td></tr>
+      <tr><td class="F m tv">false</td><td class="F m tv">false</td><td class="F m tv">false</td><td class="F m tv">false</td><td class="T m tv">true</td></tr>
     </tbody>
   </table>
   <div class="page-foot" aria-hidden="true"></div>
@@ -1183,6 +1292,92 @@ else
   </table>
   <div class="page-foot" aria-hidden="true"></div>
 </section>
+
+<section class="slide content say-slide click-reveal" data-label="כמה זה?">
+  <div class="say-code ar-code" dir="ltr">10 + 6 / 2 * 3 - 4 = ?<span class="reveal-step ar-res" hidden>= 15</span></div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content up-slide" data-label="סדר קדימויות">
+  <h2 class="slide-title">סדר קדימויות</h2>
+  <table class="table opt-tbl prec-tbl">
+    <thead><tr><th>סדר</th><th>אופרטור</th><th>סוג</th></tr></thead>
+    <tbody>
+      <tr><td class="prec-n">1</td><td class="opt-sym" dir="ltr">( )</td><td>סוגריים</td></tr>
+      <tr><td class="prec-n">2</td><td class="opt-sym" dir="ltr">!</td><td>לוגי</td></tr>
+      <tr><td class="prec-n">3</td><td class="opt-sym" dir="ltr">*  /  %</td><td>חשבוני</td></tr>
+      <tr><td class="prec-n">4</td><td class="opt-sym" dir="ltr">+  -</td><td>חשבוני</td></tr>
+      <tr><td class="prec-n">5</td><td class="opt-sym" dir="ltr">&lt;  &gt;  &lt;=  &gt;=</td><td>השוואה</td></tr>
+      <tr><td class="prec-n">6</td><td class="opt-sym" dir="ltr">==  !=</td><td>השוואה</td></tr>
+      <tr><td class="prec-n">7</td><td class="opt-sym" dir="ltr">&amp;&amp;</td><td>לוגי</td></tr>
+      <tr><td class="prec-n">8</td><td class="opt-sym" dir="ltr">||</td><td>לוגי</td></tr>
+    </tbody>
+  </table>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content ref-slide qz-slide" data-label="תרגיל פתיחה">
+  <div class="zoom-overlay"></div>
+  <div class="qz-split">
+    <ul class="qz-list">
+      <li><b>אם החודש הוא דצמבר עד פברואר</b><span dir="ltr">feel</span> יקבל את הערך <span dir="ltr">cold</span><br>והפלט יהיה: <span dir="ltr">I feel cold</span></li>
+      <li><b>אם החודש הוא יוני עד אוגוסט</b><span dir="ltr">feel</span> יקבל את הערך <span dir="ltr">hot</span><br>והפלט יהיה: <span dir="ltr">I feel hot</span></li>
+      <li><b>עבור שאר החודשים</b><span dir="ltr">feel</span> יקבל את הערך <span dir="ltr">okay</span><br>והפלט יהיה: <span dir="ltr">I feel okay</span></li>
+    </ul>
+    <div class="code-block ref-code zoomable" dir="ltr">class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Enter a month (1-12): ");
+        int month = int.Parse(Console.ReadLine());
+        string feel = "";
+
+
+
+
+
+
+
+
+
+    }
+}</div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+
+<!--section class="slide content ref-slide qz-slide" data-label="תרגיל פתיחה">
+  <div class="zoom-overlay"></div>
+  <div class="qz-split">
+    <ul class="qz-list">
+      <li>אם החודש הוא דצמבר עד פברואר, <span dir="ltr">feel</span> יקבל את הערך <span dir="ltr">cold</span> והפלט יהיה <span dir="ltr">I feel cold</span>.</li>
+      <li>אם החודש הוא יוני עד אוגוסט, <span dir="ltr">feel</span> יקבל את הערך <span dir="ltr">hot</span> והפלט יהיה <span dir="ltr">I feel hot</span>.</li>
+      <li>אם החודש הוא חודש אחר, <span dir="ltr">feel</span> יקבל את הערך <span dir="ltr">okay</span> והפלט יהיה <span dir="ltr">I feel okay</span>.</li>
+    </ul>
+    <div class="code-block ref-code zoomable" dir="ltr">class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Enter a month (1-12): ");
+        int month = int.Parse(Console.ReadLine());
+        string feel = "";
+
+
+
+
+
+
+
+
+
+    }
+}</div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section-->
+
+
 
 <button class="nav-btn nav-prev" id="prevBtn" aria-label="השקופית הקודמת">&lsaquo;</button>
 <button class="nav-btn nav-next" id="nextBtn" aria-label="השקופית הבאה">&rsaquo;</button>
