@@ -742,7 +742,6 @@ slide.up-slide { padding-top: 75px; margin-bottom: 15px }
 .tf-table.tf-dense { --row-h: 40px; font-size: 22px; }
 .tf-table.tf-dense .tf-line { font-size: 22px; }
 .ar-code { font-size: 72px; text-align: center; }
-.ar-res { display: block; margin-top: 48px; color: var(--color-accent-700); font-weight: 700; }
 .prec-tbl { max-width: 1100px; }
 .prec-tbl td { padding-top: 8px; padding-bottom: 8px; }
 .prec-tbl td.opt-sym { font-size: 34px; white-space: pre; }
@@ -759,6 +758,14 @@ slide.up-slide { padding-top: 75px; margin-bottom: 15px }
 .qz-list li::before { content: ""; position: absolute; right: 0; top: 0.55em; width: 18px; height: 18px; border-radius: 50%; background: var(--color-accent); }
 .qz-list b { display: block; font-weight: 700; }
 
+.rv-wrap { display: flex; flex-direction: column; align-items: center; gap: 72px; }
+.rv-code { margin-top: 0; }
+.rv-foot { height: 120px; display: flex; align-items: center; justify-content: center; }
+.rv-foot .reveal-btn { font-size: 36px; padding: 22px 56px; white-space: nowrap; width: max-content; }
+.rv-foot [hidden] { display: none !important; }
+.rv-res { font-family: ui-monospace, Consolas, monospace; font-size: 64px; font-weight: 700; color: var(--color-accent-700); }
+.rv-num { position: absolute; top: 72px; right: var(--pad-x); font-family: var(--font-heading); font-size: 40px; color: var(--color-accent-2-700); }
+.qz-sol .ref-code { flex: none; width: max-content; height: max-content; max-height: none; overflow: visible; white-space: pre; align-self: center; font-size: 24px; line-height: 1.5; padding: 32px 72px; }
 </style>
 </head>
 <body>
@@ -775,8 +782,9 @@ slide.up-slide { padding-top: 75px; margin-bottom: 15px }
     <div class="toc-row"><span class="toc-num">01</span><div class="toc-topic"><span>משפט תנאי בסיסי</span></div></div>
     <div class="toc-row"><span class="toc-num">02</span><div class="toc-topic"><span>שרשרת תנאים</span></div></div>
     <div class="toc-row"><span class="toc-num">03</span><div class="toc-topic"><span>תנאי מקונן</span></div></div>
-    <div class="toc-row"><span class="toc-num">04</span><div class="toc-topic"><span>תנאים מורכבים: <span dir="ltr">&amp;&amp; || !</span></span></div></div>
-    <div class="toc-row"><span class="toc-num">05</span><div class="toc-topic"><span>סיכום אופרטורים</span></div></div>
+    <div class="toc-row"><span class="toc-num">04</span><div class="toc-topic"><span dir="ltr">switch-case</span></div></div>
+    <div class="toc-row"><span class="toc-num">05</span><div class="toc-topic"><span>תנאים מורכבים: <span dir="ltr">&amp;&amp; || !</span></span></div></div>
+    <div class="toc-row"><span class="toc-num">06</span><div class="toc-topic"><span>סיכום אופרטורים</span></div></div>
   </div>
   <div class="page-foot" aria-hidden="true"></div>
 </section>
@@ -1138,7 +1146,136 @@ slide.up-slide { padding-top: 75px; margin-bottom: 15px }
 </section>
 
 <section class="slide divider" data-label="פרק 04">
-  <div class="rise"><div class="ghost-num">04</div><h2 class="slide-title">תנאים מורכבים: <span dir="ltr">&amp;&amp; || !</span></h2></div>
+  <div class="rise"><div class="ghost-num">04</div><h2 class="slide-title" dir="ltr">switch-case</h2></div>
+</section>
+
+<section class="slide content ref-slide" data-label="switch - קוד 1">
+  <h2 class="slide-title">דוגמה של יום בשבוע עם - <span dir="ltr">else if</span></h2>
+  <p class="lg-lead" style="margin-top: -30px">ומשתנה עזר <span dir="ltr">dayName</span></p>
+  <div class="zoom-overlay"></div>
+  <div class="code-block ref-code zoomable" dir="ltr">        Console.Write("Please enter day number (1-7): ");
+        int dayNumber = int.Parse(Console.ReadLine());
+        string dayName = "";
+
+        if (dayNumber == 1)
+        {
+            dayName = "Sunday";
+        }
+        else if (dayNumber == 2)
+        {
+            dayName = "Monday";
+        }
+        else if (dayNumber == 3)
+        {
+            dayName = "Tuesday";
+        }
+        else if (dayNumber == 4)
+        {
+            dayName = "Wednesday";
+        }
+        else if (dayNumber == 5)
+        {
+            dayName = "Thursday";
+        }
+        else if (dayNumber == 6)
+        {
+            dayName = "Friday";
+        }
+        else if (dayNumber == 7)
+        {
+            dayName = "Saturday";
+        }
+        else
+        {
+            dayName = "Invalid day";
+        }
+        Console.WriteLine("The day is: " + dayName);
+    }
+</div>
+</section>
+
+<section class="slide content ref-slide" data-label="switch - קוד 2">
+  <h2 class="slide-title">אותה דוגמה עם תבנית <span dir="ltr">switch</span></h2>
+  <div class="zoom-overlay"></div>
+  <div class="code-block ref-code zoomable" dir="ltr">        Console.Write("Please enter day number (1-7): ");
+        int dayNumber = int.Parse(Console.ReadLine());
+        string dayName = "";
+
+        switch (dayNumber)
+        {
+            case 1:
+                dayName = "Sunday";
+                break;
+            case 2:
+                dayName = "Monday";
+                break;
+            case 3:
+                dayName = "Tuesday";
+                break;
+            case 4:
+                dayName = "Wednesday";
+                break;
+            case 5:
+                dayName = "Thursday";
+                break;
+            case 6:
+                dayName = "Friday";
+                break;
+            case 7:
+                dayName = "Saturday";
+                break;
+            default:
+                dayName = "Invalid day";
+                break;
+        }
+        Console.WriteLine("The day is: " + dayName);
+    }
+</div>
+</section>
+
+<section class="slide content ref-slide" data-label="switch - קוד 3">
+  <h2 class="slide-title">תבנית <span dir="ltr">switch</span> עם קבוצת תנאים</h2>
+  <div class="zoom-overlay"></div>
+  <div class="code-block ref-code zoomable" dir="ltr">        Console.Write("Please enter day number (1-7): ");
+        int dayNumber = int.Parse(Console.ReadLine());
+
+        switch (dayNumber)
+        {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                Console.WriteLine("Today is a Weekday - Go to work");
+                break;
+            case 6:
+            case 7:
+                Console.WriteLine("Today is a Weekend - Go have fun!");
+                break;
+            default:
+                Console.WriteLine("Invalid day number");
+                break;
+        }
+    }
+</div>
+</section>
+
+<section class="slide content ifx-slide up-slide" data-label="מבנה switch-case">
+  <h2 class="slide-title" style="font-size: 64px;">מבנה <span dir="ltr">switch-case</span></h2>
+  <div class="code-block ifx-code ifx-multi" dir="ltr" style="scale: 1.2; transform-origin: top left; top: 320px; left: 640px;"><span class="ifx-a">switch<span class="ifx-note"><span>switch = בחר לפי ערך</span></span></span> ( <span class="ifx-a">expression<span class="ifx-note up"><span>המשתנה שבודקים</span></span></span> )
+{<span class="ifx-blk">    case value1:
+        <span class="cmt">// What to do if expression == value1</span>
+        <span class="cmt">// More to do ...</span><span class="ifx-row">        break;<span class="ifx-lead"><span class="ifx-note side"><span>יציאה מה-switch</span></span></span></span><span class="ifx-note"><span>אם הערך שווה ל-value1</span></span></span><span class="ifx-blk">    case value2:
+        <span class="cmt">// What to do if expression == value2</span>
+        break;
+        ...<span class="ifx-note"><span>אם הערך שווה ל-value2</span></span></span><span class="ifx-blk">    default:
+        <span class="cmt">// What to do if no case matched</span>
+        break;<span class="ifx-note"><span>אם אף ערך לא התאים</span></span></span>}</div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide divider" data-label="פרק 05">
+  <div class="rise"><div class="ghost-num">05</div><h2 class="slide-title">תנאים מורכבים: <span dir="ltr">&amp;&amp; || !</span></h2></div>
 </section>
 
 <section class="slide content lg-slide lg-simple lg-big" data-label="וגם - דוגמה">
@@ -1245,8 +1382,8 @@ else
   <div class="page-foot" aria-hidden="true"></div>
 </section>
 
-<section class="slide divider" data-label="פרק 05">
-  <div class="rise"><div class="ghost-num">05</div><h2 class="slide-title">סיכום אופרטורים</h2></div>
+<section class="slide divider" data-label="פרק 06">
+  <div class="rise"><div class="ghost-num">06</div><h2 class="slide-title">סיכום אופרטורים</h2></div>
 </section>
 
 <section class="slide content up-slide" data-label="אופרטורים חשבוניים">
@@ -1293,14 +1430,32 @@ else
   <div class="page-foot" aria-hidden="true"></div>
 </section>
 
-<section class="slide content say-slide click-reveal" data-label="כמה זה?">
-  <div class="say-code ar-code" dir="ltr">10 + 6 / 2 * 3 - 4 = ?<span class="reveal-step ar-res" hidden>= 15</span></div>
+<section class="slide content say-slide rv-slide" data-label="מה הערך של flag?">
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> a = 8, b = 1, c = 4;
+<span class="k">bool</span> flag = a &gt; 5 || b &gt; 3 &amp;&amp; c == 0;</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>flag = true</div>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="כמה זה?">
+  <div class="rv-wrap">
+    <div class="say-code rv-code ar-code" dir="ltr">10 + 6 / 2 * 3 - 4 = ?</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>= 15</div>
+    </div>
+  </div>
   <div class="page-foot" aria-hidden="true"></div>
 </section>
 
 <section class="slide content up-slide" data-label="סדר קדימויות">
   <h2 class="slide-title">סדר קדימויות</h2>
-  <table class="table opt-tbl prec-tbl">
+  <table class="table opt-tbl prec-tbl"style="align-self: center; max-width: 1400px;">
     <thead><tr><th>סדר</th><th>אופרטור</th><th>סוג</th></tr></thead>
     <tbody>
       <tr><td class="prec-n">1</td><td class="opt-sym" dir="ltr">( )</td><td>סוגריים</td></tr>
@@ -1311,8 +1466,168 @@ else
       <tr><td class="prec-n">6</td><td class="opt-sym" dir="ltr">==  !=</td><td>השוואה</td></tr>
       <tr><td class="prec-n">7</td><td class="opt-sym" dir="ltr">&amp;&amp;</td><td>לוגי</td></tr>
       <tr><td class="prec-n">8</td><td class="opt-sym" dir="ltr">||</td><td>לוגי</td></tr>
+      <tr><td class="prec-n">9</td><td class="opt-sym" dir="ltr">=</td><td>השמה</td></tr>
     </tbody>
   </table>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="true או false 1">
+  <div class="rv-num">1</div>
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> x = 7;
+<span class="k">bool</span> result = x % 2 == 0;</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>result = false</div>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="true או false 2">
+  <div class="rv-num">2</div>
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> a = 4, b = 9;
+<span class="k">bool</span> result = a &lt; b &amp;&amp; b &lt; 10;</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>result = true</div>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="true או false 3">
+  <div class="rv-num">3</div>
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> a = 4, b = 9;
+<span class="k">bool</span> result = a &gt; b || b == 9;</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>result = true</div>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="true או false 4">
+  <div class="rv-num">4</div>
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> a = 4;
+<span class="k">bool</span> done = false;
+<span class="k">bool</span> result = !done &amp;&amp; a == 4;</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>result = true</div>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="true או false 5">
+  <div class="rv-num">5</div>
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> x = 3;
+<span class="k">bool</span> result = x + 2 * 3 == 15;</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>result = false</div>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="true או false 6">
+  <div class="rv-num">6</div>
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> x = 3;
+<span class="k">bool</span> result = (x + 2) * 3 == 15;</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>result = true</div>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="true או false 7">
+  <div class="rv-num">7</div>
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> a = 8, b = 1, c = 4;
+<span class="k">bool</span> result = a &gt; 5 || b &gt; 3 &amp;&amp; c == 0;</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>result = true</div>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="true או false 8">
+  <div class="rv-num">8</div>
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> a = 8, b = 1, c = 4;
+<span class="k">bool</span> result = (a &gt; 5 || b &gt; 3) &amp;&amp; c == 0;</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>result = false</div>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="true או false 9">
+  <div class="rv-num">9</div>
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> a = 8;
+<span class="k">bool</span> ok = true;
+<span class="k">bool</span> result = !ok || a % 3 == 2;</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>result = true</div>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="true או false 10">
+  <div class="rv-num">10</div>
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> a = 8, c = 4;
+<span class="k">bool</span> result = !(a &gt; 5 &amp;&amp; c != 4);</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>result = true</div>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="true או false 11">
+  <div class="rv-num">11</div>
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> x = 10, y = 4;
+<span class="k">bool</span> result = x - y * 2 &gt; 1 &amp;&amp; !(x % y == 2);</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>result = false</div>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content say-slide rv-slide" data-label="true או false 12">
+  <div class="rv-num">12</div>
+  <div class="rv-wrap">
+    <div class="say-code rv-code" dir="ltr"><span class="k">int</span> x = 10, y = 4;
+<span class="k">bool</span> f = false;
+<span class="k">bool</span> result = x / y == 2 &amp;&amp; y &gt; x || !f;</div>
+    <div class="rv-foot">
+      <button class="btn btn-primary reveal-btn" type="button">הצג תשובה</button>
+      <div class="reveal-step rv-res" dir="ltr" hidden>result = true</div>
+    </div>
+  </div>
   <div class="page-foot" aria-hidden="true"></div>
 </section>
 
@@ -1343,6 +1658,33 @@ else
     }
 }</div>
   </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content ref-slide qz-sol" data-label="תרגיל פתיחה - פתרון">
+  <div class="zoom-overlay"></div>
+  <div class="code-block ref-code zoomable" dir="ltr">class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Enter a month (1-12): ");
+        int month = int.Parse(Console.ReadLine());
+        string feel = "";
+        if (month == 12 || month == 1 || month == 2)
+        {
+            feel = "cold";
+        }
+        else if (month &gt;= 6 &amp;&amp; month &lt;= 8)
+        {
+            feel = "hot";
+        }
+        else
+        {
+            feel = "okay";
+        }
+        Console.WriteLine("I feel " + feel);
+    }
+}</div>
   <div class="page-foot" aria-hidden="true"></div>
 </section>
 
@@ -1493,13 +1835,12 @@ else
     if (overlay) overlay.addEventListener('click', toggle);
   });
 
-  document.querySelectorAll('.click-reveal').forEach(function (slide) {
-    var steps = Array.prototype.slice.call(slide.querySelectorAll('.reveal-step'));
-    var stage = 0;
-    slide.addEventListener('click', function () {
-      if (stage >= steps.length) return;
-      steps[stage].hidden = false;
-      stage++;
+  document.querySelectorAll('.reveal-btn').forEach(function (btn) {
+    var res = btn.parentNode.querySelector('.reveal-step');
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      btn.hidden = true;
+      if (res) res.hidden = false;
     });
   });
 
