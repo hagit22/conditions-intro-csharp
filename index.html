@@ -1382,6 +1382,57 @@ else
   <div class="page-foot" aria-hidden="true"></div>
 </section>
 
+<section class="slide content lg-slide lg-simple" data-label="משתנה בוליאני">
+  <h2 class="slide-title">משתנה בוליאני</h2>
+  <div dir="ltr" style="display: grid; grid-template-columns: auto auto auto; align-items: center; gap: 56px; margin-top: 150px;">
+    <div class="code-block lg-code" dir="ltr" style="margin: 0 !important; font-size: 40px; padding: 44px 56px;">if (day == 6 <span class="k">||</span> day == 7)</div>
+    <div style="font-size: 72px; color: var(--color-accent-700); font-weight: 700;">→</div>
+    <div class="code-block lg-code" dir="ltr" style="margin: 0 !important; font-size: 40px; padding: 44px 56px;"><span class="k">bool</span> weekend = day == 6 <span class="k">||</span> day == 7;</div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content lg-slide lg-simple lg-mid" data-label="משתנה בוליאני - דוגמה">
+  <h2 class="slide-title">משתנה בוליאני</h2>
+  <div class="code-block lg-code" dir="ltr"><span class="k">bool</span> weekend = day == 6 <span class="k">||</span> day == 7;
+if (weekend == true)
+{
+    Console.WriteLine("Rest day");
+}
+if (weekend == false)
+{
+    Console.WriteLine("School day");
+}</div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content lg-slide lg-simple" data-label="כתיבה מקוצרת">
+  <h2 class="slide-title">כתיבה מקוצרת</h2>
+  <div dir="ltr" style="display: grid; grid-template-columns: auto auto auto; align-items: center; gap: 56px 56px; margin-top: 130px;">
+    <div class="code-block lg-code" dir="ltr" style="margin: 0 !important; font-size: 48px; padding: 40px 64px;">if (weekend == true)</div>
+    <div style="font-size: 72px; color: var(--color-accent-700); font-weight: 700;">=</div>
+    <div class="code-block lg-code" dir="ltr" style="margin: 0 !important; font-size: 48px; padding: 40px 64px;">if (weekend)</div>
+    <div class="code-block lg-code" dir="ltr" style="margin: 0 !important; font-size: 48px; padding: 40px 64px;">if (weekend == false)</div>
+    <div style="font-size: 72px; color: var(--color-accent-700); font-weight: 700;">=</div>
+    <div class="code-block lg-code" dir="ltr" style="margin: 0 !important; font-size: 48px; padding: 40px 64px;">if (<span class="k">!</span>weekend)</div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content lg-slide lg-simple lg-mid" data-label="כתיבה מקוצרת - דוגמה">
+  <h2 class="slide-title">כתיבה מקוצרת</h2>
+  <div class="code-block lg-code" dir="ltr"><span class="k">bool</span> weekend = day == 6 <span class="k">||</span> day == 7;
+if (weekend)
+{
+    Console.WriteLine("Rest day");
+}
+if (<span class="k">!</span>weekend)
+{
+    Console.WriteLine("School day");
+}</div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
 <section class="slide divider" data-label="פרק 06">
   <div class="rise"><div class="ghost-num">06</div><h2 class="slide-title">סיכום אופרטורים</h2></div>
 </section>
